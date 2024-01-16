@@ -3,7 +3,7 @@ import { Link, Outlet, useLoaderData, useNavigate, useParams } from "react-route
 export default function Book(){
 
     const {bookId} = useParams()
-    const {image, title, description, rating, author} = useLoaderData()
+    const {image, title, description, aboutAuthor, rating, author} = useLoaderData()
     
     const goBack = useNavigate()
 
@@ -16,7 +16,7 @@ export default function Book(){
             <p>{description}</p>
             <p>{rating}</p>
             <Link to={`/books/${bookId}/author`}>Author</Link>
-            <Outlet />
+            <Outlet context={aboutAuthor} />
         </div>
     )
 }

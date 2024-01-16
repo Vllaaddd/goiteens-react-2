@@ -1,11 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
-import App from "./App";
-import Home from './pages/Home'
-import Booklist from './pages/BookList'
 import { fetchBooks, fetchBooksById } from './service/fetchBooks'
-import NotFound from "./pages/NotFound";
-import Book from "./pages/Book";
-import Author from "./components/Author";
+import { lazy } from "react";
+const App = lazy(() => import('./App'))
+const BookList = lazy(() => import('./pages/BookList'))
+const Book = lazy(() => import('./pages/Book'))
+const NotFound = lazy(() => import('./pages/NotFound'))
+const Author = lazy(() => import('./components/Author'))
+const Home = lazy(() => import('./pages/Home'))
 
 export const router = createBrowserRouter([
     {
@@ -19,7 +20,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/books',
-                element: <Booklist />,
+                element: <BookList />,
                 loader: fetchBooks,
             },
             {

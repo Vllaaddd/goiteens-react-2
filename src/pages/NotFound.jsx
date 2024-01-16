@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function NotFound(){
+    const goBack = useNavigate();
     return(
         <>
             <h1>Not Found</h1>
-            <Link to='/'>На головну</Link>
+            <button onClick={() => goBack('/')}>Go home</button>
         </>
     )
 }
